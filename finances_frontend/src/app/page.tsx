@@ -1,7 +1,7 @@
 import HeaderDef from "@/components/Default/Header/Header";
 import Title from "@/components/Default/Title";
-import CardsDashboard from "@/components/Layouts/Dashboard/CardsDashboard";
-import InfoChartsDashboard from "@/components/Layouts/Dashboard/InfoChartsDashboard";
+import CardsDashboard from "@/components/Layouts/Dashboard/Cards/CardsDashboard";
+import InfoChartsDashboard from "@/components/Layouts/Dashboard/InfoCharts/InfoChartDashboard";
 import { Datepicker } from "@/components/ui/datepicker";
 
 export default async function Home() {
