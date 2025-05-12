@@ -10,7 +10,7 @@ export default async function Home() {
       <HeaderDef />
       <main className="flex flex-col items-start w-full py-4 px-32 mt-10 gap-14">
         <div className="flex justify-between w-full items-center">
-          <Title />
+          <Title name="Dashboard" />
           <Datepicker />
         </div>
         <CardsDashboard />

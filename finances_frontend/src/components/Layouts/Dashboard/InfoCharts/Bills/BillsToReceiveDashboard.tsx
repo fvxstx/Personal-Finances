@@ -33,6 +33,7 @@ const BillItemModel: IBillsItem[] = [
   },
 ];
 
+// BillsToReceiveDashboard component, show the bills to receive in the dashboard
 const BillsToReceiveDashboard = () => {
   return (
     <ContainerCard title={"Contas a receber"}>

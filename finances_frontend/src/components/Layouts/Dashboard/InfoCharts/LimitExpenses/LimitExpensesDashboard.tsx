@@ -1,5 +1,5 @@
 import ContainerCard from "@/components/Default/ContainerCard";
-import { LimitChartDashboard } from "./LimitChartDashboard";
+import { LimitItemDashboard } from "./LimitItemDashboard";
 
 const limitExpensesData = [
   {
@@ -32,6 +32,7 @@ const limitExpensesData = [
   },
 ];
 
+// LimitExpensesDashboard component, show the limit expenses in the dashboard
 const LimitExpensesDashboard = () => {
   return (
     <ContainerCard title="Limite de Gastos do Mês">
@@ -52,28 +53,3 @@ const LimitExpensesDashboard = () => {
 };
 
 export default LimitExpensesDashboard;
-
-interface ILimitItem {
-  title: string;
-  limit: number;
-  goal: number;
-  spent: number;
-  percentage: number;
-}
-
-const LimitItemDashboard = (limitItemProps: ILimitItem) => {
-  return (
-    <div className="flex justify-between items-center w-full border-b pb-4">
-      <div className="flex justify-start items-center gap-4 w-full">
-        {/*  Max Limit 360 */}
-        <LimitChartDashboard limit={limitItemProps.limit} />
-        <div>
-          <p className="font-semibold">{limitItemProps.title}</p>
-          <p>Meta: R$ {limitItemProps.goal}</p>
-          <p>Gasto: R$ {limitItemProps.spent}</p>
-        </div>
-      </div>
-      <span className="font-bold">{limitItemProps.percentage}%</span>
-    </div>
-  );
-};

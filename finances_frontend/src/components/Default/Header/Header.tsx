@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "./NavBar";
 import MoreOptionsPopover from "./MoreOptionsPopover";
 
+// Header component for the application
 const HeaderDef = async () => {
   return (
     <header className="w-full flex justify-around items-center gap-4 bg-principal text-foreground2 p-4">

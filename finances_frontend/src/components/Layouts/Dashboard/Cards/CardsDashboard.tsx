@@ -34,6 +34,7 @@ const CardDashboardModel: ICardDashboard[] = [
   },
 ];
 
+// CardsDashboard component, show the cards in the dashboard
 const CardsDashboard = () => {
   return (
     <div className="grid grid-cols-4 gap-4 w-full">

@@ -33,6 +33,7 @@ const BillItemModel: IBillsItem[] = [
   },
 ];
 
+// BillsToPayDashboard component, show the bills to pay in the dashboard
 const BillsToPayDashboard = () => {
   return (
     <ContainerCard title={"Contas a pagar"}>

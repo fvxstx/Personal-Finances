@@ -6,6 +6,7 @@ export interface IExpensesItem {
   value: string;
 }
 
+// // Item component for the dashboard expenses
 export const ExpensesItemDashboard = (expensesItemProps: IExpensesItem) => {
   return (
     <div className="flex items-center gap-3">

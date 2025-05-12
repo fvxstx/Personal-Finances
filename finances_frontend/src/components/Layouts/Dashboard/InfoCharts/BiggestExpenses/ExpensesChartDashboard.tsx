@@ -41,6 +41,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
+// ExpensesChartDashboard component, manipulate and show the chart of expenses
 export function ExpensesChartDashboard() {
   return (
     <div className="w-[250px] h-full p-1">

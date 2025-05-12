@@ -26,6 +26,7 @@ const NavbarItemsModel: INavbarItem[] = [
   },
 ];
 
+// Navbar component, you can add a item to the NavbarItemsModel array to add a new item to the navbar
 const Navbar = () => {
   const pathname = usePathname();
 

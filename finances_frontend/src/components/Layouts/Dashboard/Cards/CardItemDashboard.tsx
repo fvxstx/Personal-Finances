@@ -4,6 +4,7 @@ export interface ICardDashboard {
   icon: React.ReactNode;
 }
 
+// Item component for the dashboard cards
 export const CardItemDashboard = (cardProps: ICardDashboard) => {
   return (
     <div className="bg-white rounded-3xl shadow-md flex justify-between items-center pl-2 pr-4 w-full">

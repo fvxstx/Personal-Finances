@@ -48,10 +48,12 @@ const BiggestExpensesDashboardModel: IExpensesItem[] = [
   },
 ];
 
+// BiggestExpensesDashboard component, show the biggest expenses in the dashboard
 const BiggestExpensesDashboard = () => {
   return (
     <ContainerCard title="Maiores Despesas do Mês">
       <div className="flex justify-between items-center w-full">
+        {/* List of expenses */}
         <div className="flex flex-col items-start gap-3">
           {BiggestExpensesDashboardModel.slice(0, 5).map((item, index) => (
             <ExpensesItemDashboard
@@ -62,6 +64,8 @@ const BiggestExpensesDashboard = () => {
             />
           ))}
         </div>
+
+        {/* Chart of expenses */}
         <ExpensesChartDashboard />
       </div>
     </ContainerCard>

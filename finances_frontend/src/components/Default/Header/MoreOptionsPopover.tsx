@@ -33,6 +33,7 @@ const options = [
   },
 ];
 
+// MoreOptionsPopover component, you can add a item to the options array to add a new item to the popover
 const MoreOptionsPopover = () => {
   const [open, setOpen] = useState(false);
 

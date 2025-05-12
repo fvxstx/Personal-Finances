@@ -5,6 +5,7 @@ interface IContainerCard {
   title: string;
 }
 
+// // ContainerCard component, used to wrap the content of the dashboard
 export const ContainerCard = (containerCardProps: IContainerCard) => {
   return (
     <div className="bg-white flex flex-col py-4 px-6 w-full h-full rounded-md">

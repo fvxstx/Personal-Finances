@@ -23,6 +23,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
+// LimitChartDashboard component, manipulate and show the chart of limit
 export function LimitChartDashboard({ limit }: { limit: number }) {
   return (
     <div className="w-[50px] h-full">
