@@ -35,7 +35,7 @@ export const AccountsItems = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex flex-col gap-8 bg-background3 p-10 rounded-lg w-full">
+    <div className="flex flex-col gap-8 bg-background3 p-10 rounded-xl w-full">
       {/* All accounts */}
       {accountsMock.map((accountItem, index) => (
         <AccountItem

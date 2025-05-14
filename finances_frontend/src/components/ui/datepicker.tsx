@@ -11,9 +11,18 @@ import {
 } from "@/components/ui/popover";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-export function Datepicker() {
+export function Datepicker({ showYear = false }: { showYear?: boolean }) {
   const [date, setDate] = React.useState<Date>();
   const currentDate = new Date(Date.now());
+
+  function getLabel(d: Date | undefined) {
+    const targetDate = d ?? currentDate;
+    const options: Intl.DateTimeFormatOptions = showYear
+      ? { month: "long", year: "numeric" }
+      : { month: "long" };
+    const label = targetDate.toLocaleDateString("default", options);
+    return label.charAt(0).toUpperCase() + label.slice(1);
+  }
 
   return (
     <Popover>
@@ -22,21 +31,7 @@ export function Datepicker() {
           variant={"outline"}
           className={cn("justify-center items-center font-normal rounded-xl")}
         >
-          <p className="px-4 text-lg">
-            {date
-              ? date
-                  .toLocaleDateString("default", { month: "long" })
-                  .charAt(0)
-                  .toUpperCase() +
-                date.toLocaleDateString("default", { month: "long" }).slice(1)
-              : currentDate
-                  .toLocaleDateString("default", { month: "long" })
-                  .charAt(0)
-                  .toUpperCase() +
-                currentDate
-                  .toLocaleDateString("default", { month: "long" })
-                  .slice(1)}
-          </p>
+          <p className="px-4 text-lg">{getLabel(date)}</p>
           <MdKeyboardArrowDown className="h-4 w-4" />
         </Button>
       </PopoverTrigger>

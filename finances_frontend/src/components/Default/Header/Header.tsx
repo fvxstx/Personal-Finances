@@ -1,12 +1,15 @@
 import Image from "next/image";
 import Navbar from "./NavBar";
 import MoreOptionsPopover from "./MoreOptionsPopover";
+import Link from "next/link";
 
 // Header component for the application
 const HeaderDef = async () => {
   return (
     <header className="w-full flex justify-around items-center gap-4 bg-principal text-foreground2 p-4">
-      <h1 className="text-2xl font-bold font-uncial">Minhas Finanças</h1>
+      <Link href={"/"}>
+        <h1 className="text-2xl font-bold font-uncial">Minhas Finanças</h1>
+      </Link>
       <Navbar />
       <div className="flex justify-between items-center gap-6">
         <div className="flex gap-2 items-center justify-center">
