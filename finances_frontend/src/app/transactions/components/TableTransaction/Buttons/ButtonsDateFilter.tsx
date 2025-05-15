@@ -7,7 +7,7 @@ export const ButtonsDateFilter = () => {
       <button className="cursor-pointer">
         <MdKeyboardArrowLeft size={28} />
       </button>
-      <Datepicker showYear />
+      <Datepicker datePickerLabel="monthYear" />
       <button className="cursor-pointer">
         <MdKeyboardArrowRight size={28} />
       </button>

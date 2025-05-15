@@ -24,7 +24,7 @@ type AccountFormData = z.infer<typeof accountSchema>;
 
 // Component for the account form
 // This form is used to create and edit an account
-const AccountForm = () => {
+const AccountForm = ({ isEdit = false }: { isEdit?: boolean }) => {
   const {
     register,
     handleSubmit,
@@ -47,7 +47,9 @@ const AccountForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <DialogHeader>
-        <DialogTitle className="font-bold text-2xl">Nova Conta</DialogTitle>
+        <DialogTitle className="font-bold text-2xl">
+          {isEdit ? "Editar" : "Criar"} Conta
+        </DialogTitle>
       </DialogHeader>
       <div className="grid gap-6 py-4">
         <div className="flex flex-col gap-2 items-start">

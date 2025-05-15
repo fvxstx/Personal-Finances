@@ -11,17 +11,39 @@ import {
 } from "@/components/ui/popover";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-export function Datepicker({ showYear = false }: { showYear?: boolean }) {
+type DatepickerLabelType = "month" | "monthYear" | "fullDate";
+
+export function Datepicker({
+  datePickerLabel = "month",
+  className,
+}: {
+  datePickerLabel?: DatepickerLabelType;
+  className?: string;
+}) {
   const [date, setDate] = React.useState<Date>();
   const currentDate = new Date(Date.now());
 
   function getLabel(d: Date | undefined) {
     const targetDate = d ?? currentDate;
-    const options: Intl.DateTimeFormatOptions = showYear
-      ? { month: "long", year: "numeric" }
-      : { month: "long" };
-    const label = targetDate.toLocaleDateString("default", options);
-    return label.charAt(0).toUpperCase() + label.slice(1);
+    let options: Intl.DateTimeFormatOptions;
+
+    switch (datePickerLabel) {
+      case "monthYear":
+        options = { month: "long", year: "numeric" };
+        break;
+      case "fullDate":
+        options = { day: "2-digit", month: "2-digit", year: "numeric" };
+        break;
+      case "month":
+      default:
+        options = { month: "long" };
+        break;
+    }
+
+    let label = targetDate.toLocaleDateString("default", options);
+    // Capitaliza o mês
+    label = label.charAt(0).toUpperCase() + label.slice(1);
+    return label;
   }
 
   return (
@@ -29,9 +51,13 @@ export function Datepicker({ showYear = false }: { showYear?: boolean }) {
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
-          className={cn("justify-center items-center font-normal rounded-xl")}
+          className={
+            cn("justify-center items-center font-normal rounded-xl text-lg") +
+            " " +
+            className
+          }
         >
-          <p className="px-4 text-lg">{getLabel(date)}</p>
+          <p className="px-2 ">{getLabel(date)}</p>
           <MdKeyboardArrowDown className="h-4 w-4" />
         </Button>
       </PopoverTrigger>

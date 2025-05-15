@@ -49,7 +49,7 @@ export const AccountsItems = () => {
       {/* Dialog to edit the account */}
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="rounded-2xl">
-          <AccountForm />
+          <AccountForm isEdit />
         </DialogContent>
       </Dialog>
     </div>

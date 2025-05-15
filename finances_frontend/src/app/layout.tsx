@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Uncial_Antiqua } from "next/font/google";
 import "./globals.css";
+import HeaderDef from "@/components/Default/Header/Header";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -28,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} ${unicalAntiqua.variable} antialiased`}
       >
-        {children}
+        <div className="w-dvw h-dvh flex flex-col items-center ">
+          <HeaderDef />
+          {children}
+        </div>
       </body>
     </html>
   );
