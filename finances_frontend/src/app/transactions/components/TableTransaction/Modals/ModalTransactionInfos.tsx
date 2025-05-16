@@ -33,7 +33,7 @@ export const ModalTransactionInfos = (
               >
                 <FaPen className=" w-4 h-full" />
               </button>
-              <ButtonDelete title="Transação" />
+              <ButtonDelete title="Transação" trashCanIcon />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4 ml-10">

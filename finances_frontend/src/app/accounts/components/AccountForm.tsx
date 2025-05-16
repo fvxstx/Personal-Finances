@@ -1,7 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
-import { DialogTitle } from "@radix-ui/react-dialog";
+import {
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { BiSolidBank } from "react-icons/bi";
 import { CiPalette } from "react-icons/ci";
 import { IoIosInformationCircleOutline } from "react-icons/io";
@@ -9,6 +12,7 @@ import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { ButtonDelete } from "@/components/Default/ButtonDelete";
 
 // Schema validation Zod
 const accountSchema = z.object({
@@ -101,7 +105,9 @@ const AccountForm = ({ isEdit = false }: { isEdit?: boolean }) => {
           </div>
         </div>
       </div>
-      <DialogFooter>
+      <DialogFooter className="flex justify-between w-full sm:justify-between items-end mt-6">
+        {isEdit && <ButtonDelete title="Conta" />}
+
         <Button type="submit" className="bg-principal cursor-pointer">
           Salvar
         </Button>

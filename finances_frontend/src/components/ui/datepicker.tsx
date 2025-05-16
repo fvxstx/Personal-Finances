@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -10,8 +9,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
-type DatepickerLabelType = "month" | "monthYear" | "fullDate";
+import { useState } from "react";
+import { DatepickerLabelType } from "@/types/IDate";
+import { MonthPicker } from "./monthPicker";
 
 export function Datepicker({
   datePickerLabel = "month",
@@ -20,7 +20,7 @@ export function Datepicker({
   datePickerLabel?: DatepickerLabelType;
   className?: string;
 }) {
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = useState<Date>();
   const currentDate = new Date(Date.now());
 
   function getLabel(d: Date | undefined) {
@@ -62,12 +62,20 @@ export function Datepicker({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          initialFocus
-        />
+        {datePickerLabel === "month" || datePickerLabel === "monthYear" ? (
+          <MonthPicker
+            date={date}
+            setDate={setDate}
+            datePickerLabel={datePickerLabel}
+          />
+        ) : (
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            initialFocus
+          />
+        )}
       </PopoverContent>
     </Popover>
   );
