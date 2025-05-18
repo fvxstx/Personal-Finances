@@ -6,13 +6,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { BiSolidBank } from "react-icons/bi";
-import { CiPalette } from "react-icons/ci";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { ButtonDelete } from "@/components/Default/ButtonDelete";
+import { IconPicker } from "@/components/Default/IconPicker";
+import { useState } from "react";
 
 // Schema validation Zod
 const accountSchema = z.object({
@@ -29,6 +30,8 @@ type AccountFormData = z.infer<typeof accountSchema>;
 // Component for the account form
 // This form is used to create and edit an account
 const AccountForm = ({ isEdit = false }: { isEdit?: boolean }) => {
+  const [selectedIcon, setSelectedIcon] = useState("bank");
+
   const {
     register,
     handleSubmit,
@@ -82,16 +85,7 @@ const AccountForm = ({ isEdit = false }: { isEdit?: boolean }) => {
         </div>
         <div className="flex flex-col gap-2 items-start">
           <label className="text-right">Icone da Conta</label>
-          <div className="flex gap-2 w-full items-center">
-            <CiPalette size={24} />
-            <input
-              className="w-full border-b"
-              type="text"
-              placeholder="Escolha um emoji (Win + .)"
-              maxLength={2}
-              {...register("icon")}
-            />
-          </div>
+          <IconPicker selectedIcon={selectedIcon} onChange={setSelectedIcon} />
         </div>
         <div className="flex flex-col gap-2 items-start mt-4">
           <div className="flex gap-2 w-full items-center">

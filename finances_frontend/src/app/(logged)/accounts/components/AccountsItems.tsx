@@ -48,7 +48,7 @@ export const AccountsItems = () => {
       ))}
       {/* Dialog to edit the account */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="rounded-2xl">
+        <DialogContent className="rounded-2xl max-h-screen overflow-y-auto">
           <AccountForm isEdit />
         </DialogContent>
       </Dialog>

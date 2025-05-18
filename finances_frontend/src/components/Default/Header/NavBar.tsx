@@ -5,7 +5,7 @@ import { INavbarItem, NavbarItem } from "./NavbarItem";
 
 const NavbarItemsModel: INavbarItem[] = [
   {
-    href: "/",
+    href: "/dashboard",
     text: "Dashboard",
   },
   {
