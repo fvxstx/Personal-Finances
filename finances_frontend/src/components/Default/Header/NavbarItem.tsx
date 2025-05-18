@@ -6,6 +6,7 @@ export interface INavbarItem {
   pathName?: string;
 }
 
+// Item component for the navBar
 export const NavbarItem = (navBarItemProps: INavbarItem) => {
   return (
     <li

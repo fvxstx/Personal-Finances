@@ -7,6 +7,7 @@ interface IOptionsProp {
   href: string;
 }
 
+// Item component for the popover in the menu Header
 const OptionsComp = (optionsProps: IOptionsProp) => {
   return (
     <li className="flex gap-2 items-center hover:bg-background3 hover:p-1 rounded-2xl">

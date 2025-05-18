@@ -6,6 +6,7 @@ export interface IBillsItem {
   isLate: boolean;
 }
 
+// Item component for the dashboard bills
 export const BillsItemDashboard = (billsItemProps: IBillsItem) => {
   return (
     <div className="flex justify-between items-start w-full border-b pb-2 ">
