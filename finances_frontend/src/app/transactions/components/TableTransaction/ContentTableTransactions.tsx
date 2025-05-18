@@ -15,7 +15,7 @@ import { TableCellAccount } from "./TableCellAccount";
 import { useState } from "react";
 import { ModalTransactionInfos } from "./Modals/ModalTransactionInfos";
 import { IoPizzaOutline } from "react-icons/io5";
-import { ModalIndividualTransaction } from "@/components/Default/ModalIndividualTransaction";
+import { ModalIndividualTransaction } from "@/components/Default/Modals/ModalIndividualTransaction";
 
 const TableMock = [
   {

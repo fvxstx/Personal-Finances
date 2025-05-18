@@ -3,7 +3,7 @@ import { CiCreditCard1 } from "react-icons/ci";
 import { FaMoneyBill1Wave } from "react-icons/fa6";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { ICardDashboard, CardItemDashboard } from "./CardItemDashboard";
-import { ModalIndividualTransaction } from "@/components/Default/ModalIndividualTransaction";
+import { ModalIndividualTransaction } from "@/components/Default/Modals/ModalIndividualTransaction";
 import { useState } from "react";
 import { ItransactionType } from "@/types/ITransaction";
 import { useRouter } from "next/navigation";

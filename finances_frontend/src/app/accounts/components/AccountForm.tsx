@@ -106,7 +106,16 @@ const AccountForm = ({ isEdit = false }: { isEdit?: boolean }) => {
         </div>
       </div>
       <DialogFooter className="flex justify-between w-full sm:justify-between items-end mt-6">
-        {isEdit && <ButtonDelete title="Conta" />}
+        {isEdit && (
+          <ButtonDelete title="Conta">
+            <Button
+              type="button"
+              className="cursor-pointer bg-red-500 text-white"
+            >
+              Deletar
+            </Button>
+          </ButtonDelete>
+        )}
 
         <Button type="submit" className="bg-principal cursor-pointer">
           Salvar

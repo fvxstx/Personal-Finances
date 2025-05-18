@@ -5,7 +5,7 @@ import { ItransactionType } from "@/types/ITransaction";
 import { useState } from "react";
 import { FaExchangeAlt, FaMinus, FaPlus } from "react-icons/fa";
 import { ButtonTriggerTypeTransaction } from "./ButtonTriggerTypeTransaction";
-import { ModalIndividualTransaction } from "@/components/Default/ModalIndividualTransaction";
+import { ModalIndividualTransaction } from "@/components/Default/Modals/ModalIndividualTransaction";
 
 export const ButtonPopoverNewTransaction = () => {
   const [open, setOpen] = useState(false);

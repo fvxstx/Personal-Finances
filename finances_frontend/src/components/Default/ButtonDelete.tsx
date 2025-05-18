@@ -6,31 +6,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { FaTrashAlt } from "react-icons/fa";
-import { Button } from "../ui/button";
 
 export interface IButtonDelete {
   title: string;
-  trashCanIcon?: boolean;
+  children: React.ReactNode;
 }
 
 export const ButtonDelete = (buttonDeleteProps: IButtonDelete) => {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        {buttonDeleteProps.trashCanIcon ? (
-          <button className="bg-background3 text-white w-fit h-full p-2 rounded-full cursor-pointer">
-            <FaTrashAlt className=" w-4 h-full" />
-          </button>
-        ) : (
-          <Button
-            type="button"
-            className="cursor-pointer bg-red-500 text-white"
-          >
-            Deletar
-          </Button>
-        )}
-      </DialogTrigger>
+      <DialogTrigger asChild>{buttonDeleteProps.children}</DialogTrigger>
       <DialogContent>
         <DialogTitle className="text-center font-bold text-2xl">
           Excluir {buttonDeleteProps.title}

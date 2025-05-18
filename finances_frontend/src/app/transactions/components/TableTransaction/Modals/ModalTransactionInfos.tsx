@@ -1,6 +1,6 @@
 import { ButtonDelete } from "@/components/Default/ButtonDelete";
 import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer";
-import { FaPen, FaThumbsUp } from "react-icons/fa";
+import { FaPen, FaThumbsUp, FaTrashAlt } from "react-icons/fa";
 import { IoPizzaOutline } from "react-icons/io5";
 
 export interface ITransactionInfos {
@@ -33,7 +33,11 @@ export const ModalTransactionInfos = (
               >
                 <FaPen className=" w-4 h-full" />
               </button>
-              <ButtonDelete title="Transação" trashCanIcon />
+              <ButtonDelete title="Transação" trashCanIcon>
+                <button className="bg-background3 text-white w-fit h-full p-2 rounded-full cursor-pointer">
+                  <FaTrashAlt className=" w-4 h-full" />
+                </button>
+              </ButtonDelete>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4 ml-10">
