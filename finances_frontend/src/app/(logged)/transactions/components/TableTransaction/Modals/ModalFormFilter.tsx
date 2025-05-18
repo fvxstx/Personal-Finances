@@ -36,7 +36,7 @@ export const ModalFormFilter = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <label>Catégorias</label>
+            <label>Categorias</label>
             <select className="rounded-2xl border p-2 shadow-sm">
               <option value="all">Todas</option>
               <option value="food">Alimentação</option>

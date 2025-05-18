@@ -91,7 +91,7 @@ export const ModalIndividualTransaction = (
           <div className="flex justify-between gap-4 items-center">
             {individualTransactionProps.typeTransaction !== "transfer" && (
               <div className="flex flex-col gap-2 items-start w-full">
-                <label className="text-right">Catégoria</label>
+                <label className="text-right">Categoria</label>
                 <div className="flex gap-2 w-full items-center">
                   <CiPalette size={24} />
                   <select className="w-full border-b">

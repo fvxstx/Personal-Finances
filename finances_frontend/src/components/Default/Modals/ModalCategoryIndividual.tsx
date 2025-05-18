@@ -12,19 +12,19 @@ export const ModalCategoryIndividual = ({ isEdit }: { isEdit?: boolean }) => {
   return (
     <DialogContent className="rounded-2xl">
       <DialogTitle className="text-2xl font-bold">
-        {!isEdit ? "Criar nova" : "Editar"} catégoria
+        {!isEdit ? "Criar nova" : "Editar"} categoria
       </DialogTitle>
       <form action="">
         <div className="grid gap-6 py-4">
           <div className="flex flex-col gap-2 items-start">
-            <label className="text-right">Nome da Catégoria</label>
+            <label className="text-right">Nome da Categoria</label>
             <div className="flex gap-2 w-full items-center">
               <input className="w-full border-b" />
             </div>
           </div>
           <div className="flex gap-4 items-center justify-between">
             <div className="flex flex-col gap-2 items-start">
-              <label className="text-right">Cor da Catégoria</label>
+              <label className="text-right">Cor da Categoria</label>
               <ColorPicker
                 selectedColor={categoryColor}
                 onChange={setCategoryColor}
