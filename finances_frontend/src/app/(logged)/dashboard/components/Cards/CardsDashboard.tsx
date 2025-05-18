@@ -1,7 +1,12 @@
+"use client";
 import { CiCreditCard1 } from "react-icons/ci";
 import { FaMoneyBill1Wave } from "react-icons/fa6";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { ICardDashboard, CardItemDashboard } from "./CardItemDashboard";
+import { ModalIndividualTransaction } from "@/components/Default/Modals/ModalIndividualTransaction";
+import { useState } from "react";
+import { ItransactionType } from "@/types/ITransaction";
+import { useRouter } from "next/navigation";
 
 const CardDashboardModel: ICardDashboard[] = [
   {
@@ -34,7 +39,27 @@ const CardDashboardModel: ICardDashboard[] = [
   },
 ];
 
+// CardsDashboard component, show the cards in the dashboard
 const CardsDashboard = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [typeTransaction, setTypeTransaction] =
+    useState<ItransactionType>("income");
+  const navigate = useRouter();
+
+  const handleClickCard = (title: string) => {
+    if (title === "Saldo em Conta") {
+      navigate.push("/accounts");
+    }
+    if (title === "Receita") {
+      setOpenModal(true);
+      setTypeTransaction("income");
+    }
+    if (title === "Despesas") {
+      setOpenModal(true);
+      setTypeTransaction("expense");
+    }
+  };
+
   return (
     <div className="grid grid-cols-4 gap-4 w-full">
       {CardDashboardModel.map((card, index) => (
@@ -43,9 +68,17 @@ const CardsDashboard = () => {
             title={card.title}
             value={card.value}
             icon={card.icon}
+            onClickCard={() => {
+              handleClickCard(card.title);
+            }}
           />
         </div>
       ))}
+      <ModalIndividualTransaction
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        typeTransaction={typeTransaction}
+      />
     </div>
   );
 };

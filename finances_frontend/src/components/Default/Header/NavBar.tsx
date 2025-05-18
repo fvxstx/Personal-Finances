@@ -5,7 +5,7 @@ import { INavbarItem, NavbarItem } from "./NavbarItem";
 
 const NavbarItemsModel: INavbarItem[] = [
   {
-    href: "/",
+    href: "/dashboard",
     text: "Dashboard",
   },
   {
@@ -13,6 +13,14 @@ const NavbarItemsModel: INavbarItem[] = [
     text: "Transações",
   },
   {
+    href: "/accounts",
+    text: "Contas",
+  },
+  {
+    href: "/categories",
+    text: "Categorias",
+  },
+  /* {
     href: "/reports",
     text: "Relatórios",
   },
@@ -23,9 +31,10 @@ const NavbarItemsModel: INavbarItem[] = [
   {
     href: "/goals",
     text: "Metas",
-  },
+  }, */
 ];
 
+// Navbar component, you can add a item to the NavbarItemsModel array to add a new item to the navbar
 const Navbar = () => {
   const pathname = usePathname();
 

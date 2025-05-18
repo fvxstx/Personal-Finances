@@ -5,7 +5,7 @@ import {
   Popover,
   PopoverContent,
 } from "@/components/ui/popover";
-import { MdAccountBalance, MdCategory } from "react-icons/md";
+/* import { MdAccountBalance, MdCategory } from "react-icons/md"; */
 import { IoLogOutOutline } from "react-icons/io5";
 import OptionsComp from "./OptionsCompPopover";
 import { useState } from "react";
@@ -16,7 +16,7 @@ const options = [
     text: "Meu Perfil",
     href: "/profile",
   },
-  {
+  /*   {
     icon: <MdAccountBalance />,
     text: "Contas",
     href: "/accounts",
@@ -25,7 +25,7 @@ const options = [
     icon: <MdCategory />,
     text: "Categorias",
     href: "/categories",
-  },
+  }, */
   {
     icon: <IoLogOutOutline />,
     text: "Sair",
@@ -33,6 +33,7 @@ const options = [
   },
 ];
 
+// MoreOptionsPopover component, you can add a item to the options array to add a new item to the popover
 const MoreOptionsPopover = () => {
   const [open, setOpen] = useState(false);
 

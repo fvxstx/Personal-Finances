@@ -15,7 +15,7 @@ const BillItemModel: IBillsItem[] = [
     date: "15/05/2025",
     value: "R$ 39,90",
     icon: <BiCubeAlt className="bg-gray-300 w-10 h-auto rounded-full p-2" />,
-    isLate: true,
+    isLate: false,
   },
   {
     title: "Spotify Assinatura",
@@ -29,13 +29,14 @@ const BillItemModel: IBillsItem[] = [
     date: "25/05/2025",
     value: "R$ 14,90",
     icon: <BiCubeAlt className="bg-gray-300 w-10 h-auto rounded-full p-2" />,
-    isLate: true,
+    isLate: false,
   },
 ];
 
-const BillsToPayDashboard = () => {
+// BillsToReceiveDashboard component, show the bills to receive in the dashboard
+const BillsToReceiveDashboard = () => {
   return (
-    <ContainerCard title={"Contas a pagar"}>
+    <ContainerCard title={"Contas a receber"}>
       <div className="flex flex-col items-center w-full gap-4">
         {BillItemModel.map((billItem, index) => (
           <BillsItemDashboard
@@ -52,4 +53,4 @@ const BillsToPayDashboard = () => {
   );
 };
 
-export default BillsToPayDashboard;
+export default BillsToReceiveDashboard;

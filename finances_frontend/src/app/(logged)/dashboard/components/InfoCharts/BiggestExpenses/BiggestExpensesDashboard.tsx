@@ -1,8 +1,30 @@
 import ContainerCard from "@/components/Default/ContainerCard";
-import { JSX } from "react";
 import { BiSolidCookie } from "react-icons/bi";
+import { ExpensesItemDashboard, IExpensesItem } from "./ExpensesItemDashboard";
+import { ExpensesChartDashboard } from "./ExpensesChartDashboard";
 
-const BiggestExpensesDashboardModel = [
+const BiggestExpensesDashboardModel: IExpensesItem[] = [
+  {
+    icon: (
+      <BiSolidCookie className="text-white bg-amber-500 p-2 rounded-full w-9 h-auto" />
+    ),
+    title: "Aquisição de Bens",
+    value: "32,89%",
+  },
+  {
+    icon: (
+      <BiSolidCookie className="text-white bg-amber-500 p-2 rounded-full w-9 h-auto" />
+    ),
+    title: "Aquisição de Bens",
+    value: "32,89%",
+  },
+  {
+    icon: (
+      <BiSolidCookie className="text-white bg-amber-500 p-2 rounded-full w-9 h-auto" />
+    ),
+    title: "Aquisição de Bens",
+    value: "32,89%",
+  },
   {
     icon: (
       <BiSolidCookie className="text-white bg-amber-500 p-2 rounded-full w-9 h-auto" />
@@ -26,12 +48,14 @@ const BiggestExpensesDashboardModel = [
   },
 ];
 
+// BiggestExpensesDashboard component, show the biggest expenses in the dashboard
 const BiggestExpensesDashboard = () => {
   return (
     <ContainerCard title="Maiores Despesas do Mês">
       <div className="flex justify-between items-center w-full">
-        <div className="flex flex-col items-start w-full gap-3">
-          {BiggestExpensesDashboardModel.map((item, index) => (
+        {/* List of expenses */}
+        <div className="flex flex-col items-start gap-3">
+          {BiggestExpensesDashboardModel.slice(0, 5).map((item, index) => (
             <ExpensesItemDashboard
               key={index}
               icon={item.icon}
@@ -40,26 +64,12 @@ const BiggestExpensesDashboard = () => {
             />
           ))}
         </div>
-        <div>chart</div>
+
+        {/* Chart of expenses */}
+        <ExpensesChartDashboard />
       </div>
     </ContainerCard>
   );
 };
 
 export default BiggestExpensesDashboard;
-
-interface IExpensesItem {
-  icon: JSX.Element;
-  title: string;
-  value: string;
-}
-
-const ExpensesItemDashboard = (expensesItemProps: IExpensesItem) => {
-  return (
-    <div className="flex items-center w-full gap-3">
-      {expensesItemProps.icon}
-      <p className="font-bold">{expensesItemProps.title}</p>
-      <p className="font-bold">{expensesItemProps.value}</p>
-    </div>
-  );
-};
