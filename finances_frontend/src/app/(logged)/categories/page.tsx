@@ -8,7 +8,7 @@ export default async function CategoriesPage() {
     <main className="flex flex-col items-start w-full py-4 px-32 mt-10 gap-14">
       <Tabs defaultValue="expenses" className="w-full">
         <div className="flex justify-between w-full items-center">
-          <Title name="Catégorias" />
+          <Title name="Categorias" />
           <TabsContent value="expenses" className="flex-0">
             <NewCategoryButton typeCategory="expenses" />
           </TabsContent>
