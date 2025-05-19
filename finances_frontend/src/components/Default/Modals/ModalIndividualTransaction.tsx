@@ -6,6 +6,9 @@ import { MdDescription } from "react-icons/md";
 import { Switch } from "@/components/ui/switch";
 import { Datepicker } from "@/components/ui/datepicker";
 import { ItransactionType } from "@/types/ITransaction";
+import { useState } from "react";
+import { BsCalendarCheck, BsCreditCard2Back } from "react-icons/bs";
+import { MdOutlineLoop } from "react-icons/md";
 
 export interface IModalIndividualTransaction {
   openModal: boolean;
@@ -17,6 +20,15 @@ export interface IModalIndividualTransaction {
 export const ModalIndividualTransaction = (
   individualTransactionProps: IModalIndividualTransaction
 ) => {
+  const [isRecurring, setIsRecurring] = useState(false);
+  const [recurrenceType, setRecurrenceType] = useState<"fixed" | "installment">(
+    "fixed"
+  );
+  const [recurrenceFrequency, setRecurrenceFrequency] = useState<
+    "daily" | "weekly" | "monthly" | "annual"
+  >("monthly");
+  const [installmentCount, setInstallmentCount] = useState(1);
+
   const label =
     individualTransactionProps.typeTransaction == "income"
       ? "Receita"
@@ -36,7 +48,7 @@ export const ModalIndividualTransaction = (
       open={individualTransactionProps.openModal}
       onOpenChange={individualTransactionProps.setOpenModal}
     >
-      <DialogContent>
+      <DialogContent className="max-h-screen overflow-y-auto ">
         <DialogTitle className={`font-bold text-2xl ${colorInputValue}`}>
           {individualTransactionProps.isEditTransaction ? "Editar" : "Nova"}{" "}
           {label}
@@ -112,6 +124,84 @@ export const ModalIndividualTransaction = (
               </div>
             </div>
           </div>
+
+          {/* Nova seção de transação recorrente */}
+          <div className="flex flex-col gap-2 items-start mt-4">
+            <div className="flex gap-2 w-full items-center">
+              <MdOutlineLoop size={24} />
+              <label>Transação Recorrente?</label>
+              <Switch checked={isRecurring} onCheckedChange={setIsRecurring} />
+            </div>
+          </div>
+
+          {isRecurring && (
+            <div className="flex flex-col gap-4 border p-4 rounded-md bg-gray-50">
+              <div className="flex gap-4 items-center">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    id="fixed"
+                    name="recurrenceType"
+                    checked={recurrenceType === "fixed"}
+                    onChange={() => setRecurrenceType("fixed")}
+                  />
+                  <label htmlFor="fixed" className="flex items-center gap-1">
+                    <BsCalendarCheck size={18} /> Fixa
+                  </label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    id="installment"
+                    name="recurrenceType"
+                    checked={recurrenceType === "installment"}
+                    onChange={() => setRecurrenceType("installment")}
+                  />
+                  <label
+                    htmlFor="installment"
+                    className="flex items-center gap-1"
+                  >
+                    <BsCreditCard2Back size={18} /> Parcelada
+                  </label>
+                </div>
+              </div>
+
+              {recurrenceType === "fixed" && (
+                <div className="flex flex-col gap-2">
+                  <label>Frequência:</label>
+                  <select
+                    className="w-full border p-2 rounded"
+                    value={recurrenceFrequency}
+                    onChange={(e) =>
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      setRecurrenceFrequency(e.target.value as any)
+                    }
+                  >
+                    <option value="daily">Diária</option>
+                    <option value="weekly">Semanal</option>
+                    <option value="monthly">Mensal</option>
+                    <option value="annual">Anual</option>
+                  </select>
+                </div>
+              )}
+
+              {recurrenceType === "installment" && (
+                <div className="flex flex-col gap-2">
+                  <label>Número de parcelas:</label>
+                  <input
+                    type="number"
+                    min="2"
+                    value={installmentCount}
+                    onChange={(e) =>
+                      setInstallmentCount(Number(e.target.value))
+                    }
+                    className="w-full border p-2 rounded"
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="flex flex-col gap-2 items-start mt-4">
             <div className="flex gap-2 w-full items-center">
               <IoIosInformationCircleOutline size={24} />
