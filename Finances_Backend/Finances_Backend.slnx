@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Finances.Api\Finances.Api.csproj" Type="Classic C#" />
+  <Project Path="Finances.Application\Finances.Application.csproj" Type="Classic C#" />
+  <Project Path="Finances.Domain\Finances.Domain.csproj" Type="Classic C#" />
+  <Project Path="Finances.Infrastructure\Finances.Infrastructure.csproj" Type="Classic C#" />
+</Solution>
