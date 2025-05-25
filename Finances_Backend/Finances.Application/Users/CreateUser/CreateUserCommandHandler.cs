@@ -4,14 +4,23 @@ using MediatR;
 
 namespace Finances.Application.Users.CreateUser;
 
-internal class CreateUserCommandHandler(IUserRepository userRepository) : IRequestHandler<CreateUserCommand, Guid>
+internal class CreateUserCommandHandler(IUserRepository userRepository, IHashService hashService, IAppSettings appSettings) : 
+    IRequestHandler<CreateUserCommand, Guid>
 {
     public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var user = User.CreateNew(request.Name, request.Email, request.Password, request.Photo_Url);
-        userRepository.Add(user);
+        var hashedPassword = hashService.HashValue(request.Password);
         
-        await userRepository.UnitOfWork.CommitAsync(cancellationToken);
-        return user.Id;
+        var user = User.CreateNew(request.Name, request.Email, hashedPassword, request.Photo_Url);
+        
+        /*Verify the token value if is ok and then register the user */
+        if (request.Token == appSettings.SpecialToken)
+        {
+            userRepository.Add(user);
+            await userRepository.UnitOfWork.CommitAsync(cancellationToken);
+            return user.Id;
+        }
+
+        throw new Exception("Token invalido");
     }
 }

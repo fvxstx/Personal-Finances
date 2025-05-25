@@ -1,5 +1,6 @@
 ﻿using Finances.Application.Common.Abstractions;
 using Finances.Infrastructure.Data;
+using Finances.Infrastructure.Data.Common;
 using Finances.Infrastructure.Data.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +21,14 @@ public static class DependencyInjection
             o.EnableDetailedErrors();
             o.EnableSensitiveDataLogging();
         }, ServiceLifetime.Scoped);
+        
+        // Add configurations access 
+        services.AddScoped<IAppSettings, AppSettings>();
+        
+        // Add Hash service for password
+        services.AddScoped<IHashService, HashService>();
+        // Add Jwt service to generate the authentication
+        services.AddScoped<IJwtService, JwtService>();
         
         // Declaring the repositories
         services.AddScoped<IUnitOfWork, ApplicationDbContext>();
