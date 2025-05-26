@@ -18,25 +18,18 @@ internal class UserRepository(ApplicationDbContext dbContext) : IUserRepository
 
     public async Task<User?> GetByIdAsync(Guid userId)
     {
-        return await dbContext.Users.FindAsync(userId);
+        return await dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
+    }
+    
+    public async Task<User?> GetByEmailAsync(string email)
+    {
+        return await dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
     }
 
     public void Update(User user)
     {
         dbContext.Update(user);
     }
-
-    /*public async Task<User> UpdateProfilePhotoAsync(FileStream file, Guid userId)
-    {
-        User? user = await dbContext.Users.FindAsync(userId);
-        if (user == null)
-            throw new Exception("User not found");
-        
-        dbContext.Users.Update(user);
-        await dbContext.SaveChangesAsync();
-
-        return user;
-    }*/
     
     public IUnitOfWork UnitOfWork => dbContext;
 }
