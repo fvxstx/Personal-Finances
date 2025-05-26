@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text;
+using Finances_Backend.CodesValidation;
 using Finances_Backend.Configurations;
 using Finances_Backend.Users;
 using Finances.Application;
@@ -73,7 +74,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
 
+// Register Controllers Entities
 app.RegisterUserApi();
+app.RegisterCodeValidationApi();
 
 using (var scope = app.Services.CreateScope())
 {

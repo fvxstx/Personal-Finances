@@ -1,5 +1,6 @@
 ﻿using Finances.Application.Common.Abstractions;
 using Finances.Infrastructure.Data;
+using Finances.Infrastructure.Data.CodesValidation;
 using Finances.Infrastructure.Data.Common;
 using Finances.Infrastructure.Data.Users;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,8 @@ public static class DependencyInjection
         // Declaring the repositories
         services.AddScoped<IUnitOfWork, ApplicationDbContext>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICodeValidationRepository, CodeValidationRepository>();
+        
         return services;
     }
 }

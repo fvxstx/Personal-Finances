@@ -10,7 +10,7 @@ public class CodeValidation : BaseEntity
     public int Expiration_Time { get; private set; }
     public Guid? User_Id { get; private set; }
 
-    public static CodeValidation CreateNew(string value, CodeValidationType type, int expiration_time, Guid? user_id)
+    public static CodeValidation CreateNew(string value, CodeValidationType type, int expiration_time, Guid? user_id = null)
     {
         return new CodeValidation
         {
