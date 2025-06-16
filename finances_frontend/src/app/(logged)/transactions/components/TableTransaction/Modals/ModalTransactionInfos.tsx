@@ -33,7 +33,7 @@ export const ModalTransactionInfos = (
               >
                 <FaPen className=" w-4 h-full" />
               </button>
-              <ButtonDelete title="Transação">
+              <ButtonDelete onDelete={() => {}} title="Transação">
                 <button className="bg-background3 text-white w-fit h-full p-2 rounded-full cursor-pointer">
                   <FaTrashAlt className=" w-4 h-full" />
                 </button>

@@ -8,13 +8,13 @@ const HeaderDef = async () => {
   return (
     <header className="w-full flex justify-around items-center gap-4 bg-principal text-foreground2 p-4">
       <Link href={"/dashboard"}>
-        {/* <h1 className="text-2xl font-bold font-uncial">Minhas Finanças</h1> */}
         <Image
-          width={100}
-          height={100}
+          width={1000}
+          height={1000}
           src={"/logo.png"}
           alt="Logo"
           className="h-auto w-40"
+          priority
         />
       </Link>
       <Navbar />

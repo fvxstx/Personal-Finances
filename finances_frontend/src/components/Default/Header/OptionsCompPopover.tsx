@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { JSX } from "react";
 
@@ -12,7 +13,13 @@ const OptionsComp = (optionsProps: IOptionsProp) => {
   return (
     <li className="flex gap-2 items-center hover:bg-background3 hover:p-1 rounded-2xl">
       {optionsProps.icon}
-      <Link href={optionsProps.href}>{optionsProps.text}</Link>
+      {optionsProps.href == "/logout" ? (
+        <button className="cursor-pointer" onClick={() => signOut()}>
+          {optionsProps.text}
+        </button>
+      ) : (
+        <Link href={optionsProps.href}>{optionsProps.text}</Link>
+      )}
     </li>
   );
 };

@@ -9,6 +9,7 @@ import {
 
 export interface IButtonDelete {
   title: string;
+  onDelete: () => void;
   children: React.ReactNode;
 }
 
@@ -27,12 +28,15 @@ export const ButtonDelete = (buttonDeleteProps: IButtonDelete) => {
         </DialogDescription>
         <div className="flex items-center justify-center gap-4 mt-4">
           <DialogClose asChild>
-            <button className="bg-red-600 text-white w-fit h-full p-2 rounded-full cursor-pointer">
+            <button
+              onClick={buttonDeleteProps.onDelete}
+              className="bg-red-600 text-white w-fit h-full p-2 rounded-full cursor-pointer px-6"
+            >
               Excluir
             </button>
           </DialogClose>
           <DialogClose asChild>
-            <button className="bg-principal text-white w-fit h-full p-2 rounded-full cursor-pointer">
+            <button className="bg-principal text-white w-fit h-full p-2 rounded-full cursor-pointer px-6">
               Cancelar
             </button>
           </DialogClose>
