@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Finances.Application.Users.UpdateUserPassword;
 
-internal class UpdateUserPasswordCommandHandler(IUserRepository userRepository, 
+internal class UpdateUserPasswordCommandHandler(IUserRepository userRepository, IHashService hashService,
     ICodeValidationRepository codeValidationRepository) : IRequestHandler<UpdateUserPasswordCommand, Guid>
 {
     public async Task<Guid> Handle(UpdateUserPasswordCommand request, CancellationToken cancellationToken)
@@ -22,7 +22,9 @@ internal class UpdateUserPasswordCommandHandler(IUserRepository userRepository,
         await codeValidationRepository.UnitOfWork.CommitAsync(cancellationToken);
 
         var user = await userRepository.GetByIdAsync((Guid)isCodeVerify.User_Id!);
-        user.UpdatePassword(request.NewPassword);
+
+        var hashedPassword = hashService.HashValue(request.NewPassword);
+        user.UpdatePassword(hashedPassword);
         await userRepository.UnitOfWork.CommitAsync(cancellationToken);
         return user.Id;
     }

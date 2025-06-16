@@ -1,7 +1,10 @@
 using System.Globalization;
 using System.Text;
+using Finances_Backend.Accounts;
+using Finances_Backend.Categories;
 using Finances_Backend.CodesValidation;
 using Finances_Backend.Configurations;
+using Finances_Backend.Transactions;
 using Finances_Backend.Users;
 using Finances.Application;
 using Finances.Infrastructure;
@@ -38,6 +41,18 @@ builder.Services.AddApplication();
 // Add swagger configurations
 builder.Services.ConfigurateSwaggerGen();
 
+// Adding Cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
+    });
+});
+
 // Add infrastrcture
 builder.Services.AddInfrasctructure(builder.Configuration);
 
@@ -63,6 +78,8 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.UseCors("CorsPolicy");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -72,11 +89,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseHttpsRedirection();
+app.UseHttpsRedirection();  
 
 // Register Controllers Entities
 app.RegisterUserApi();
 app.RegisterCodeValidationApi();
+app.RegisterAccountApi();
+app.RegisterCategoryApi();
+app.RegisterTransactionApi();
 
 using (var scope = app.Services.CreateScope())
 {

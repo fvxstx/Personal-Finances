@@ -1,6 +1,6 @@
 ﻿using Finances.Application.Common.Abstractions;
 
-namespace Finances.Infrastructure.Data.Common;
+namespace Finances.Infrastructure.Security;
 
 internal class HashService : IHashService
 {
