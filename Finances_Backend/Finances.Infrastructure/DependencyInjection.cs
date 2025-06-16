@@ -1,8 +1,12 @@
 ﻿using Finances.Application.Common.Abstractions;
 using Finances.Infrastructure.Data;
+using Finances.Infrastructure.Data.Accounts;
+using Finances.Infrastructure.Data.Categories;
 using Finances.Infrastructure.Data.CodesValidation;
 using Finances.Infrastructure.Data.Common;
+using Finances.Infrastructure.Data.Transactions;
 using Finances.Infrastructure.Data.Users;
+using Finances.Infrastructure.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +39,9 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, ApplicationDbContext>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICodeValidationRepository, CodeValidationRepository>();
+        services.AddScoped<IAccountRepository, AccountRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ITransactionRepository, TransactionRepository>();
         
         return services;
     }

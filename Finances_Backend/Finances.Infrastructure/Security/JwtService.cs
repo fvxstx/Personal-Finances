@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
-namespace Finances.Infrastructure.Data.Common;
+namespace Finances.Infrastructure.Security;
 
 internal class JwtService : IJwtService
 {

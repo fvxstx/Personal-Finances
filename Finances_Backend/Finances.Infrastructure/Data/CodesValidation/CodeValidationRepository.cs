@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Finances.Infrastructure.Data.CodesValidation;
 
-public class CodeValidationRepository(ApplicationDbContext dbContext) : ICodeValidationRepository
+internal class CodeValidationRepository(ApplicationDbContext dbContext) : ICodeValidationRepository
 {
     public void Add(CodeValidation code)
     {

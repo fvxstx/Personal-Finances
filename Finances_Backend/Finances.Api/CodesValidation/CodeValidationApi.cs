@@ -14,13 +14,13 @@ public static class CodeValidationApi
             var token = await mediator.Send(command);
             return TypedResults.Created($"/codes-validation", token);
 
-        }).RequireAuthorization().WithName("CreateCodeRegister").WithTags("CodeValidation");
+        }).WithName("CreateCodeRegister").WithTags("CodeValidation");
         
         app.MapPost("/codes-validation/code-password", async (string email, IMediator mediator) =>
         {
             var command = new CreateCodePasswordCommand(email);
             var token = await mediator.Send(command);
             return TypedResults.Created($"/codes-validation", token);
-        }).RequireAuthorization().WithName("CreateCodePassword").WithTags("CodeValidation");
+        }).WithName("CreateCodePassword").WithTags("CodeValidation");
     } 
 }
