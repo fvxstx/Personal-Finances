@@ -1,12 +1,21 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import AccountForm from "./AccountForm";
+import { useState } from "react";
 
 // Component for the button to create a new account
 const NewAccountButton = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" className="cursor-pointer">
           <span className="ml-2">
@@ -16,7 +25,8 @@ const NewAccountButton = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="rounded-2xl">
-        <AccountForm />
+        <DialogDescription className="hidden" />
+        <AccountForm onClose={() => setIsOpen(false)} />
       </DialogContent>
     </Dialog>
   );

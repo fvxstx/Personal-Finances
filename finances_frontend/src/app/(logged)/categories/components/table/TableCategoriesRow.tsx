@@ -27,7 +27,7 @@ export const TableCategoriesRow = (
           </DialogTrigger>
           <ModalCategoryIndividual isEdit />
         </Dialog>
-        <ButtonDelete title="Categoria">
+        <ButtonDelete onDelete={() => {}} title="Categoria">
           <button>
             <FaRegTrashAlt className="w-9 h-full hover:bg-background2 p-2 hover:rounded-full" />
           </button>

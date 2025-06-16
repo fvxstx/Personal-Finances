@@ -18,7 +18,7 @@ export const AccountItem = (accountItemProps: IAccountItem) => {
         {accountItemProps.icon}
         <p className="font-bold text-black">{accountItemProps.name}</p>
       </div>
-      <p className="font-bold">R$ {accountItemProps.value}</p>
+      <p className="font-bold">{accountItemProps.value}</p>
     </div>
   );
 };
